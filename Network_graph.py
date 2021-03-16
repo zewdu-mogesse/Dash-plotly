@@ -17,6 +17,7 @@ def network_graph(graph):
             ncenter=n
             dmin=d
 
+
     p = nx.single_source_shortest_path_length(graph, ncenter)
     
 #     print(etext)
