@@ -28,25 +28,19 @@ def network_graph(graph):
                            text = ([text]),
                            mode = 'lines')
         index = index + 1
-        
+     
 #     # For each edge, make an edge_trace, append to list
     edge_trace = []
     for edge in graph.edges():
-
         if graph.edges()[edge]['Frequency'] > 0:
             char_1 = edge[0]
             char_2 = edge[1]
-
             x0, y0 = pos[char_1]
             x1, y1 = pos[char_2]
-
             text   = char_1 + '--' + char_2 + ': ' + str(graph.edges()[edge]['Frequency'])
-
             trace  = make_edge([x0, x1, None], [y0, y1, None], text,
                                0.1*graph.edges()[edge]['Frequency']**1.75)
-
             edge_trace.append(trace)
-
     node_trace = go.Scatter(
         x=[],
         y=[],
@@ -55,8 +49,7 @@ def network_graph(graph):
         hoverinfo='text',
         textfont=dict(
         family="sans serif",
-        color="#06D5FA",
-            
+        color="#06D5FA",           
     ),
         marker=dict(
             showscale=False,
