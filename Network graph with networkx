@@ -21,19 +21,7 @@ def network_graph(graph):
     
 #     print(etext)
     node_labels = list(graph.nodes)
-    
 
-#     colors = list(Color('lightcoral').range_to(Color('darkred'), len(G.edges())))
-#     colors = ['rgb' + str(x.rgb) for x in colors]
-
-#     index = 0
-#     for edge in G.edges:
-        
-#         trace = go.Scatter(marker=dict(color=colors[index]),
-# #                            line_shape='spline',
-#                            opacity=1)
-#         edge_trace.append(trace)
-#         index = index + 1
         
     
     def make_edge(x, y, text, width):
