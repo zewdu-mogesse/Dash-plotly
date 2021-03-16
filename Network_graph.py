@@ -1,12 +1,10 @@
 def network_graph(graph):
-    
     pos=nx.get_node_attributes(graph,'pos')
     # set node positions
     pos = nx.spring_layout(graph)
-#         pos = graphviz_layout(G, prog='circo')
+#         pos = graphviz_layout(G, prog='circo') # if you are interested tree structure network graph
     for node in graph.nodes():
         graph.nodes[node]['pos']= list(pos[node])
-
     pos=nx.get_node_attributes(graph,'pos')
     dmin=1
     ncenter=0
@@ -16,32 +14,21 @@ def network_graph(graph):
         if d<dmin:
             ncenter=n
             dmin=d
-
-
-    p = nx.single_source_shortest_path_length(graph, ncenter)
-    
-#     print(etext)
+    p = nx.single_source_shortest_path_length(graph, ncenter)   
     node_labels = list(graph.nodes)
-
-        
     
+    #function to create edges with their width
     def make_edge(x, y, text, width):
         index = 0
         return  go.Scatter(x = x,
                            y = y,
                            line = dict(width = width
-#                                        color = colors[index]
                                       ),
-#                            marker=dict(color=colors[index]),
                            hoverinfo = 'text',
                            text = ([text]),
                            mode = 'lines')
-    
-    
         index = index + 1
-
-
-
+        
 #     # For each edge, make an edge_trace, append to list
     edge_trace = []
     for edge in graph.edges():
@@ -64,17 +51,13 @@ def network_graph(graph):
         x=[],
         y=[],
         text=node_labels,
-#         hovertext = labels,
         mode='markers + text ',
         hoverinfo='text',
         textfont=dict(
         family="sans serif",
-#         size=17,
         color="#06D5FA",
-#         line={'width': 10},
             
     ),
-        
         marker=dict(
             showscale=False,
             
@@ -111,19 +94,11 @@ def network_graph(graph):
         width=1200,
         height=1200
     )
-
-
     fig = go.Figure(layout = layout)
-
     for trace in edge_trace:
         fig.add_trace(trace)
-
     fig.add_trace(node_trace)
-
     fig.update_layout(showlegend = False)
-
     fig.update_xaxes(showticklabels = False)
-
     fig.update_yaxes(showticklabels = False)
-
     return fig
